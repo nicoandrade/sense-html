@@ -1,0 +1,7 @@
+{
+    "css.validate": false,
+    "files.exclude": {
+        "**/src/assets": true,
+        "**/dist": true,
+    }
+}
