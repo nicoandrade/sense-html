@@ -53,3 +53,13 @@ npm run build
 ```
 
 And then you will see your new files optimized for production inside `./dist` folder
+
+### Credits
+
+Some of the awesome products used on this template
+[Tailwind CSS](https://tailwindcss.com/)
+[Heroicons](https://heroicons.com/)
+[Placeholder Image by Choirul Syafril](https://dribbble.com/shots/14396043-Dashboard-Cloud-Storage)
+[Image](https://unsplash.com/photos/jTSf1xnsoCs)
+[Image](https://unsplash.com/photos/iFgRcqHznqg)
+[Image](https://unsplash.com/photos/mEZ3PoFGs_k)
