@@ -1,5 +1,7 @@
 # Sense HTML - Free Tailwind CSS template
 
+![Sense HTML](https://raw.githubusercontent.com/nicoandrade/sense-html/main/promo/github_promo.jpg "Sense HTML")
+
 Sense HTML is a one page free Tailwind CSS template.
 
 Easy to customize the main colors to change the look & feel of the entire site via Tailwind classes.
@@ -14,7 +16,7 @@ Easy to customize the main colors to change the look & feel of the entire site v
     cd <YOUR_PROJECT_NAME>
     ```
 
-    Or else simply download the template zip file from [this link](https://github.com/nicoandrade/sense-html).
+    Or else simply download the template zip file from [this link](https://github.com/nicoandrade/sense-html/archive/refs/heads/main.zip).
 
 2. Grab the `./dist` folder
 
