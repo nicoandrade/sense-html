@@ -6,6 +6,8 @@ const cleanCSS = require("gulp-clean-css");
 const del = require("del");
 var log = require("fancy-log");
 const chalk = require("chalk");
+const uglify = require("gulp-uglify");
+const babel = require("gulp-babel");
 
 /*
 Development Functions
@@ -20,19 +22,20 @@ function cssTask(cb) {
 
 // Task for compiling JS files
 function jsTask(cb) {
-    return src("./src/src_assets/js/*.js").pipe(dest("./src/assets/js")).pipe(browserSync.stream());
+    return src("./src/src_assets/js/*.js")
+        .pipe(
+            babel({
+                presets: ["@babel/preset-env"],
+            })
+        )
+        .pipe(dest("./src/assets/js"))
+        .pipe(browserSync.stream());
     cb();
 }
 
 // Task for dev images
 function devImagesTask(cb) {
     return src("./src/src_assets/images/*").pipe(imagemin()).pipe(dest("./src/assets/images"));
-    cb();
-}
-
-// Task for minifying images
-function imageminTask(cb) {
-    return src("./src/src_assets/images/*").pipe(imagemin()).pipe(dest("./dist/assets/images"));
     cb();
 }
 
@@ -85,17 +88,44 @@ function cssClean(cb) {
     cb();
 }
 
+// Task for compiling JS files
+function jsBuild(cb) {
+    return src("./src/src_assets/js/*.js")
+        .pipe(
+            babel({
+                presets: ["@babel/preset-env"],
+            })
+        )
+        .pipe(uglify())
+        .pipe(dest("./dist/assets/js"))
+        .on("end", function () {
+            log(chalk.green("JS files proccesed with babel, uglify and moved to " + chalk.bold("./dist/assets/js") + " folder"));
+        });
+    cb();
+}
+
+// Task for minifying images
+function imageminTask(cb) {
+    return src("./src/src_assets/images/*")
+        .pipe(imagemin())
+        .pipe(dest("./dist/assets/images"))
+        .on("end", function () {
+            log(chalk.green("Images proccesed with imagemin and moved to " + chalk.bold("./dist/assets/images") + " folder"));
+        });
+    cb();
+}
+
 // Move HTML
 function moveFiles(cb) {
     return src(["./src/**/*.html", "./src/favicon.ico", "./src/icon.png", "./src/site.webmanifest"])
         .pipe(dest("./dist"))
         .on("end", function () {
-            log(chalk.green("Files moved to " + chalk.bold("./dist") + " folder"));
+            log(chalk.green("HTML and others files moved to " + chalk.bold("./dist") + " folder"));
         });
     cb();
 }
 
 // Default Gulp Task
 exports.default = series(cssTask, jsTask, devImagesTask, browsersyncServe, watchTask);
-exports.build = series(cleanDist, cssClean, moveFiles, imageminTask);
+exports.build = series(cleanDist, cssClean, jsBuild, imageminTask, moveFiles);
 exports.images = imageminTask;

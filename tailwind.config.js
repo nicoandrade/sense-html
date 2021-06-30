@@ -7,7 +7,7 @@ module.exports = {
         extend: {
             colors: {
                 // Build your palette here
-                "light-blue": colors.lightBlue,
+                sky: colors.sky,
                 orange: colors.orange,
                 cyan: colors.cyan,
             },

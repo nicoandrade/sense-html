@@ -48,7 +48,7 @@ If you want to make changes to the Tailwind configuration file or do a deeper de
 
 3. Open `./src/index.html` in your editor (VS Code recommended) and start editing!
 
-Then to publish your changes just use the `build` command
+Then to publish your changes to the `./dist` folder, which is the folder you have to use in production, just use the `build` command
 
 ```bash
 npm run build

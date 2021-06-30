@@ -1,33 +1,33 @@
+"use strict";
+
 // Mobile Menu
-let mobileMenuButton = document.querySelectorAll(".mobile-menu-button");
-let mobileMenu = document.querySelector(".mobile-menu");
+var mobileMenuButton = document.querySelectorAll(".mobile-menu-button");
+var mobileMenu = document.querySelector(".mobile-menu");
 Array.prototype.forEach.call(mobileMenuButton, function (el, i) {
-    el.addEventListener("click", (e) => {
-        mobileMenu.classList.toggle("hidden");
-    });
-});
+  el.addEventListener("click", function (e) {
+    mobileMenu.classList.toggle("hidden");
+  });
+}); // FAQ
 
-// FAQ
-let faq = document.querySelectorAll(".faq");
+var faq = document.querySelectorAll(".faq");
 Array.prototype.forEach.call(faq, function (el, i) {
-    el.addEventListener("click", (e) => {
-        let elTargetAttr = el.getAttribute("data-target");
-        let elTarget = document.getElementById(elTargetAttr);
-        var elIcon = el.querySelector("i");
-        elTarget.classList.toggle("hidden");
-        elIcon.classList.toggle("-rotate-180");
-    });
-});
+  el.addEventListener("click", function (e) {
+    var elTargetAttr = el.getAttribute("data-target");
+    var elTarget = document.getElementById(elTargetAttr);
+    var elIcon = el.querySelector("i");
+    elTarget.classList.toggle("hidden");
+    elIcon.classList.toggle("-rotate-180");
+  });
+}); // Main Menu ScrollTo
 
-// Main Menu ScrollTo
-let scrollto = document.querySelectorAll(".scrollto");
+var scrollto = document.querySelectorAll(".scrollto");
 Array.prototype.forEach.call(scrollto, function (el, i) {
-    el.addEventListener("click", (e) => {
-        e.preventDefault();
-        let elTargetAttr = el.getAttribute("data-target");
-        let elTarget = document.getElementById(elTargetAttr);
-        elTarget.scrollIntoView({
-            behavior: "smooth",
-        });
+  el.addEventListener("click", function (e) {
+    e.preventDefault();
+    var elTargetAttr = el.getAttribute("data-target");
+    var elTarget = document.getElementById(elTargetAttr);
+    elTarget.scrollIntoView({
+      behavior: "smooth"
     });
+  });
 });
